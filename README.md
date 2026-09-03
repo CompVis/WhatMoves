@@ -160,9 +160,9 @@ The current single-GPU implementation keeps both 14B Wan experts in GPU memory. 
 ## 🖥️ Interactive App
 Want to try WhatMoves without writing any code? The interactive app provides a simple visual workflow for **selecting motion from source videos and composing it into a target scene**.
 
-<p align="center">
-  <video src="docs/videos/app_demo.mp4" width="100%" autoplay loop muted playsinline></video>
-</p>
+
+https://github.com/user-attachments/assets/09ca005a-bc85-4eba-8f6c-c159c2611994
+
 
 You can upload one or more source videos, select the entities whose motion you want to reuse, choose the corresponding regions in a target image, and generate the resulting video directly from the interface. SAM2-assisted prompting makes region selection fast and interactive, while color-coded mappings help keep track of which source motion is assigned to which target object.
 
