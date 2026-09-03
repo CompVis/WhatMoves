@@ -3,15 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://compvis.github.io/WhatMoves/">
-    <img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page">
-  </a>
-  <a href="https://arxiv.org/">
-    <img src="https://img.shields.io/badge/arXiv-paper-b31b1b" alt="Paper">
-  </a>
-  <a href="https://huggingface.co/CompVis/WhatMoves">
-    <img src="https://img.shields.io/badge/%F0%9F%A4%97-weights-yellow" alt="Weights">
-  </a>
+  <a href="https://compvis.github.io/WhatMoves/"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
+  <a href="https://arxiv.org/"><img src="https://img.shields.io/badge/arXiv-paper-b31b1b" alt="Paper"></a>
+  <a href="https://huggingface.co/CompVis/WhatMoves"><img src="https://img.shields.io/badge/%F0%9F%A4%97-weights-yellow" alt="Weights"></a>
 </p>
 
 <h2 align="center">
@@ -85,12 +79,11 @@ from source requires `nvcc` and a compatible compiler toolchain.
 
 
 ## 🧩 Scene Composition
+WhatMoves can be used to **compose the motion of an entire scene from individual source motions**. Select an object or region in one or more source videos, choose the corresponding regions in a target image, and transfer each motion independently to its target. This makes it possible to animate different entities with motions taken from different videos while preserving the appearance and composition of the target scene.
 
 <p align="center">
   <img src="docs/images/scene_composition.png" width="100%" alt="Scene composition with localized motion transfer">
 </p>
-
-WhatMoves can be used to **compose the motion of an entire scene from individual source motions**. Select an object or region in one or more source videos, choose the corresponding regions in a target image, and transfer each motion independently to its target. This makes it possible to animate different entities with motions taken from different videos while preserving the appearance and composition of the target scene.
 
 Our released adapter integrates WhatMoves with [Wan2.2 I2V-A14B](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B). The required Wan runtime is included in `wan/`, so no separate Wan repository is needed, and the base model weights are downloaded automatically on first use.
 
@@ -155,7 +148,7 @@ model = torch.hub.load(
 )
 ```
 
-For a visual, no-code workflow for scene composition, you can use the interactive app below.
+Prefer a visual, no-code workflow? You can try the same scene composition pipeline directly in the **interactive app** below.
 
 ### 💾 Resource requirements
 
@@ -164,9 +157,12 @@ Wan2.2 I2V-A14B requires substantial GPU memory and disk space. The base model o
 The current single-GPU implementation keeps both 14B Wan experts in GPU memory. A one-source, 25-frame generation at 480 × 704 resolution uses approximately **67.6 GiB** of peak allocated memory on an 80 GB A100. A 40 GB GPU is therefore not sufficient for the current implementation. CPU offloading, multi-GPU inference, and sequential expert offloading are not yet supported.
 
 
-## 🖥️ Interactive app
-
+## 🖥️ Interactive App
 Want to try WhatMoves without writing any code? The interactive app provides a simple visual workflow for **selecting motion from source videos and composing it into a target scene**.
+
+<p align="center">
+  <video src="docs/videos/app_demo.mp4" width="100%" autoplay loop muted playsinline></video>
+</p>
 
 You can upload one or more source videos, select the entities whose motion you want to reuse, choose the corresponding regions in a target image, and generate the resulting video directly from the interface. SAM2-assisted prompting makes region selection fast and interactive, while color-coded mappings help keep track of which source motion is assigned to which target object.
 
@@ -242,6 +238,8 @@ For each extraction window, WhatMoves updates the content embedding using the fi
 ## 🙏 Acknowledgements
 
 WhatMoves builds on a fantastic ecosystem of open-source research. We thank the **DINOv2**, **Wan2.2**, **Hugging Face Diffusers**, and **SAM2** teams for making their work publicly available and enabling projects like this one.
+
+You can also check out our previous work, [DisMo](https://github.com/CompVis/DisMo), which introduced **global, content-disentangled motion representations for open-world motion transfer**.
 
 This repository contains reduced and modified code from [DINOv2](https://github.com/facebookresearch/dinov2) and [Wan2.2](https://github.com/Wan-Video/Wan2.2), both released under the Apache License 2.0. The released model artifacts likewise contain a mixture of original and upstream-derived components.
 
