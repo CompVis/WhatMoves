@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Interactive demo for What Moves? Localized Motion Representations for Compositional Scene Control."
+    />
+    <title>What Moves? — Interactive Demo</title>
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg?v=20260904h" />
+    <link rel="stylesheet" href="/static/styles.css?v=20260904h" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="app-brand">
+        <div>
+          <h1><em>What Moves?</em></h1>
+          <p>Transfer localized motion from videos to a still image.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="startOver" class="start-over-button" title="Remove all current media and start over">
+          <span class="broom-icon" aria-hidden="true"></span>
+          <span>Start Over</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="workspace">
+        <section class="panel source-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Motion</span>
+              <h2>Source videos</h2>
+            </div>
+            <button id="removeSource" class="danger-quiet hidden">Remove</button>
+          </div>
+
+          <div class="source-workspace">
+            <aside id="sourceRail" class="source-rail" aria-label="Uploaded source videos">
+              <button id="sourceRailUpload" class="source-upload-tile" title="Upload source video">+</button>
+            </aside>
+            <div class="source-main">
+              <div id="sourceCanvasHost" class="canvas-host">
+                <video id="sourceVideo" muted playsinline></video>
+                <canvas id="sourceCanvas"></canvas>
+                <button id="sourceEmpty" class="empty-state">
+                  <span class="empty-icon">↥</span>
+                  <strong>Upload a source video</strong>
+                  <small>It will be sampled at 8 fps and appear here.</small>
+                </button>
+                <div id="sourceCanvasStatus" class="canvas-status hidden"></div>
+                <div id="sourceModeBadge" class="mode-badge hidden">Masking</div>
+                <div id="sourceLoader" class="media-loader hidden" role="status" aria-label="Loading source media"><span class="loading-spinner"></span></div>
+              </div>
+            <div id="sourceTools" class="canvas-tools hidden">
+              <button id="sourceMaskMode" class="tool-button">Start masking</button>
+              <span class="shortcut-hint">Click foreground · right-click background · drag a box</span>
+              <div class="tool-spacer"></div>
+              <button id="sourcePlay" class="tool-button playback-button" aria-label="Play" title="Play">
+                <svg class="playback-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </button>
+              <button id="sourceCancelDraft" class="text-button hidden">Cancel</button>
+              <button id="sourceAddMask" class="primary-small hidden">Add mask</button>
+            </div>
+            <div id="sourceSettings" class="source-settings hidden">
+              <span id="sourceTime" class="source-time hidden" aria-hidden="true"></span>
+              <div id="sourceTimeline" class="video-timeline hidden" aria-label="Source video timeline">
+                  <div class="timeline-filmstrip"></div>
+                  <div class="timeline-selection"></div>
+                  <div class="timeline-before"></div>
+                  <div class="timeline-after"></div>
+                  <div class="timeline-masks"></div>
+                  <div class="timeline-playhead"></div>
+                  <div class="trim-handle left" data-handle="left"></div>
+                  <div class="trim-handle right" data-handle="right"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="target-stack">
+          <section class="panel target-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Appearance</span>
+                <h2>Target image</h2>
+              </div>
+              <div class="panel-actions">
+                <button id="removeTarget" class="danger-quiet hidden">Remove</button>
+              </div>
+            </div>
+            <div class="target-workspace">
+              <div class="target-main">
+                <div id="targetCanvasHost" class="canvas-host target-host">
+                  <canvas id="targetCanvas"></canvas>
+                  <button id="targetEmpty" class="empty-state">
+                    <span class="empty-icon">↥</span>
+                    <strong>Upload a target image</strong>
+                    <small>Create grey regions, then drag colored source masks onto them.</small>
+                  </button>
+                  <div id="targetCanvasStatus" class="canvas-status hidden"></div>
+                  <div id="targetModeBadge" class="mode-badge hidden">Masking</div>
+                  <div id="targetLoader" class="media-loader hidden" role="status" aria-label="Loading target image"><span class="loading-spinner"></span></div>
+                </div>
+                <div id="targetTools" class="canvas-tools hidden">
+                  <button id="targetMaskMode" class="tool-button">Start masking</button>
+                  <span class="shortcut-hint">Click foreground · right-click background · drag a box</span>
+                  <div class="tool-spacer"></div>
+                  <button id="targetCancelDraft" class="text-button hidden">Cancel</button>
+                  <button id="targetAddMask" class="primary-small hidden">Add mask</button>
+                </div>
+              </div>
+              <aside id="targetRail" class="target-rail" aria-label="Uploaded target images"></aside>
+            </div>
+          </section>
+
+          <section class="generate-card">
+            <label for="prompt" class="prompt-label">Describe the target video</label>
+            <textarea id="prompt" rows="2" placeholder="Describe how the bear and dog should move">A bear and a dog together in the forest.</textarea>
+            <details id="advancedSettings">
+              <summary>Advanced settings</summary>
+              <div class="advanced-grid">
+                <label>Guidance
+                  <select id="guidanceMode">
+                    <option value="text_cfg">Text CFG</option>
+                    <option value="joint_cfg">Joint CFG</option>
+                    <option value="motion_cfg">Motion CFG</option>
+                    <option value="additive_cfg">Additive CFG</option>
+                    <option value="factorized_cfg">Factorized CFG</option>
+                    <option value="base_cfg">Base Wan (no motion)</option>
+                  </select>
+                </label>
+                <label>Steps <input id="steps" type="number" min="1" max="100" value="40" /></label>
+                <label>Seed <input id="seed" type="number" value="42" /></label>
+                <label>Text guidance <input id="textGuidance" type="number" step="0.1" value="3.5" /></label>
+                <label>Motion guidance <input id="motionGuidance" type="number" step="0.1" value="1.0" /></label>
+                <label>LoRA scale <input id="loraScale" type="number" step="0.1" value="1.0" /></label>
+                <label class="negative-prompt">Negative prompt
+                  <input id="negativePrompt" type="text" placeholder="Use the Wan default" />
+                </label>
+              </div>
+            </details>
+            <button id="generateButton" class="generate-button">
+              <span id="generateButtonProgress" class="generate-button-progress"></span>
+              <span class="generate-button-content">
+                <span id="generateButtonLabel">Generate video</span>
+                <span id="generateButtonCount"></span>
+              </span>
+            </button>
+            <div id="generatedRail" class="generated-rail hidden" aria-label="Generated videos"></div>
+            <p id="generateHint" class="generate-hint">Upload media and create a motion mapping.</p>
+          </section>
+        </div>
+      </div>
+
+      <section id="resultPanel" class="result-panel hidden">
+        <div class="result-heading">
+          <div>
+            <span class="eyebrow">Result</span>
+            <h2>Generated video</h2>
+          </div>
+          <div class="result-actions">
+            <span id="resultMeta"></span>
+            <button id="resultClose" class="icon-button result-close" aria-label="Close generated video" title="Close">×</button>
+          </div>
+        </div>
+        <div class="result-media">
+          <video id="resultVideo" controls loop playsinline></video>
+          <div id="resultLoader" class="media-loader hidden" role="status" aria-label="Loading generated video"><span class="loading-spinner"></span></div>
+        </div>
+      </section>
+    </main>
+
+    <input id="sourceFile" type="file" accept="video/*" hidden />
+    <input id="targetFile" type="file" accept="image/*" hidden />
+    <div id="contextMenu" class="context-menu hidden"></div>
+    <div id="dragGhost" class="drag-ghost hidden"></div>
+    <div id="mappingHint" class="mapping-hint hidden" aria-hidden="true"></div>
+    <div id="toast" class="toast hidden"></div>
+
+    <script type="module" src="/static/app.js?v=20260904l"></script>
+  </body>
+</html>

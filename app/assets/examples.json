@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "tiger",
+      "name": "Tiger",
+      "video": "sources/tiger.mp4",
+      "trim": [0, 24],
+      "masks": [
+        {
+          "id": "tiger",
+          "frame": 0,
+          "mask": "masks/tiger_f00.png",
+          "color": "#E69F00"
+        }
+      ]
+    },
+    {
+      "id": "penguins",
+      "name": "Penguins",
+      "video": "sources/penguins.mp4",
+      "trim": [0, 24],
+      "masks": [
+        {
+          "id": "center-penguin",
+          "frame": 0,
+          "mask": "masks/center_penguin_f00.png",
+          "color": "#56B4E9"
+        }
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "id": "bear-dog",
+      "name": "Bear and dog",
+      "image": "targets/bear_and_dog.png",
+      "masks": [
+        {
+          "id": "bear",
+          "mask": "masks/target_bear.png"
+        },
+        {
+          "id": "dog",
+          "mask": "masks/target_dog.png"
+        }
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "source": "tiger",
+      "source_mask": "tiger",
+      "target": "bear-dog",
+      "target_mask": "bear"
+    },
+    {
+      "source": "penguins",
+      "source_mask": "center-penguin",
+      "target": "bear-dog",
+      "target_mask": "dog"
+    }
+  ]
+}

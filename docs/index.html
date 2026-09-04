@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Project page for What Moves? Localized Motion Representations for Compositional Scene Control."
+    />
+    <title>What Moves?</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="What Moves home">
+          <span>What Moves?</span>
+        </a>
+        <nav class="nav-links" aria-label="Section navigation">
+          <a href="#tldr">TL;DR</a>
+          <a href="#method">Method</a>
+          <a href="#generation">Generation</a>
+          <a href="#results">Results</a>
+          <a href="#qualitative">Qualitative</a>
+          <a href="#comparisons">Comparisons</a>
+          <a href="#cite">Cite</a>
+        </nav>
+      </div>
+    </header>
+
+    <details class="related-work-flyout">
+      <summary>
+        <svg class="related-work-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5h16v12H8l-4 3z" />
+          <path d="M8 9h8M8 13h5" />
+        </svg>
+        <span>Related Work</span>
+        <svg class="related-work-chevron" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="m6 12 4-4 4 4" />
+        </svg>
+      </summary>
+
+      <div class="related-work-panel">
+        <section>
+          <p class="related-work-label">From the Authors</p>
+          <a
+            href="https://github.com/CompVis/DisMo/tree/main/dismo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="related-work-title-row">
+              <span class="related-work-name">DisMo</span>
+              <span class="related-work-venue">NeurIPS 2025</span>
+            </span>
+            <span class="related-work-summary">
+              Semantic motion representations disentangled from static content
+              for open-world motion transfer.
+            </span>
+          </a>
+        </section>
+
+        <section>
+          <p class="related-work-label">Related Work</p>
+          <a
+            href="https://arxiv.org/abs/2602.02259"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="related-work-title-row">
+              <span class="related-work-name">Segment to Focus</span>
+              <span class="related-work-venue">arXiv 2026</span>
+            </span>
+            <span class="related-work-summary">
+              Mask-guided latent action learning focuses reconstruction on
+              agent motion instead of visual distractors.
+            </span>
+          </a>
+          <a
+            href="https://lhchen.top/Motion4Motion/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="related-work-title-row">
+              <span class="related-work-name">Motion4Motion</span>
+              <span class="related-work-venue">SIGGRAPH 2026</span>
+            </span>
+            <span class="related-work-summary">
+              Training-free, skeleton-free motion transfer across subjects
+              using dense motion flow.
+            </span>
+          </a>
+        </section>
+      </div>
+    </details>
+
+    <main id="top" class="fresh-page">
+      <section class="hero band split-hero">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <h1><em>What Moves?</em></h1>
+            <p class="subtitle">
+              Localized Motion Representations for Compositional Scene Control
+            </p>
+            <p class="authors">
+              <a
+                href="https://ffundel.de/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Frank Fundel<sup>*</sup></a
+              ><span class="author-punctuation">,</span>
+              <a
+                href="https://www.linkedin.com/in/malek-ben-alaya/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Malek Ben Alaya<sup>*</sup></a
+              ><span class="author-punctuation">,</span>
+              <a
+                href="https://www.linkedin.com/in/thomas-ressler-494758133/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Thomas Ressler-Antal<sup>*</sup></a
+              ><span class="author-punctuation">,</span>
+              <a
+                href="https://stefan-baumann.eu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Stefan Andreas Baumann</a
+              ><span class="author-punctuation">,</span>
+              <a
+                href="https://ommer-lab.com/ommer/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Björn Ommer</a
+              >
+            </p>
+            <p class="venue"><span>* equal contribution</span></p>
+            <p class="affiliation">CompVis @ LMU Munich, MCML</p>
+            <div class="actions" aria-label="Project links">
+              <a
+                class="demo-action"
+                href="https://huggingface.co/spaces/FrankFundel/WhatMoves"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Try the WhatMoves demo on Hugging Face"
+              >
+                <span class="huggingface-icon" aria-hidden="true">🤗</span>
+                Demo
+              </a>
+              <span class="project-action" title="Public arXiv link coming soon">
+                <img
+                  class="arxiv-icon"
+                  src="arxiv.webp"
+                  alt=""
+                  aria-hidden="true"
+                />
+                arXiv
+              </span>
+              <a
+                href="https://github.com/CompVis/WhatMoves"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Project code"
+              >
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m8 9-4 3 4 3" />
+                  <path d="m16 9 4 3-4 3" />
+                  <path d="m14 5-4 14" />
+                </svg>
+                Code
+              </a>
+              <a
+                href="https://huggingface.co/CompVis/WhatMoves"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatMoves model weights on Hugging Face"
+              >
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12" />
+                  <path d="m7 10 5 5 5-5" />
+                  <path d="M5 21h14" />
+                </svg>
+                Weights
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <div class="explainer-video teaser-video">
+              <video
+                src="videos/intro.mp4"
+                controls
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tldr" class="band abstract-band">
+        <p class="tldr">
+          <strong>TL;DR:</strong> Real-world scenes contain multiple entities
+          moving at once, but most video representations either encode motion
+          globally or localize it by cropping away the context needed to
+          interpret it. We introduce promptable localized motion
+          representations: the encoder sees the full video, while masks query
+          persistent region-specific motion tokens. These tokens support
+          object-level motion transfer, compositional scene control, and
+          localized action classification.
+        </p>
+      </section>
+
+      <section id="method" class="band explainer-band">
+        <div class="section-heading">
+          <h2>Contextualized Motion Representations</h2>
+        </div>
+        <div class="explainer-video method-video">
+          <video
+            src="videos/method.mp4"
+            poster="posters/method.jpg"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+      </section>
+
+      <section id="generation" class="band explainer-band">
+        <div class="section-heading">
+          <h2>Steering a Video Model</h2>
+        </div>
+        <div class="explainer-video conditioning-video">
+          <video
+            src="videos/video_cond.mp4"
+            poster="posters/video_cond.jpg"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+      </section>
+
+      <section id="results" class="band results-band fresh-results">
+        <div class="section-heading">
+          <h2><em>Context and Locality Matters</em></h2>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Localized Action Classification</h3>
+            <p>A2D, kNN over queried actor motion embeddings.</p>
+            <div class="bar-chart">
+              <div class="bar-row">
+                <span>DINOv2 RGB</span>
+                <i style="--pct: 41.4%"></i>
+                <b>17.4</b>
+              </div>
+              <div class="bar-row">
+                <span>V-JEPA2 RGB</span>
+                <i style="--pct: 56.7%"></i>
+                <b>23.8</b>
+              </div>
+              <div class="bar-row">
+                <span>DisMo RGB</span>
+                <i style="--pct: 80.7%"></i>
+                <b>33.9</b>
+              </div>
+              <div class="bar-row highlight">
+                <span>Ours</span>
+                <i style="--pct: 100%"></i>
+                <b>42.0</b>
+              </div>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <h3>Controllable Motion Transfer</h3>
+            <p>Motion selectivity: in-region fidelity minus leakage.</p>
+            <div class="bar-chart">
+              <div class="bar-row">
+                <span>ATI</span>
+                <i style="--pct: 86.9%"></i>
+                <b>0.200</b>
+              </div>
+              <div class="bar-row">
+                <span>WanMove</span>
+                <i style="--pct: 79.4%"></i>
+                <b>0.183</b>
+              </div>
+              <div class="bar-row">
+                <span>DisMo</span>
+                <i style="--pct: 59.8%"></i>
+                <b>0.138</b>
+              </div>
+              <div class="bar-row highlight">
+                <span>Ours</span>
+                <i style="--pct: 100%"></i>
+                <b>0.230</b>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="result-card global-card">
+          <h3>Global Motion Classification</h3>
+          <p>
+            With a full-frame query, the same encoder becomes a global motion
+            representation and remains competitive with dedicated video and
+            motion models.
+          </p>
+          <div class="table-wrap">
+            <table class="global-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>SSv2</th>
+                  <th>Jester</th>
+                  <th>Diving48</th>
+                  <th>ARID</th>
+                  <th>IARD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>DINOv2</th>
+                  <td>10.3</td>
+                  <td>23.2</td>
+                  <td>9.4</td>
+                  <td>14.5</td>
+                  <td>76.1</td>
+                </tr>
+                <tr>
+                  <th>VideoMAE</th>
+                  <td>7.1</td>
+                  <td>20.1</td>
+                  <td>-</td>
+                  <td>17.3</td>
+                  <td>73.4</td>
+                </tr>
+                <tr>
+                  <th>V-JEPA2</th>
+                  <td>22.2</td>
+                  <td>40.8</td>
+                  <td>11.1</td>
+                  <td>28.0</td>
+                  <td>87.6</td>
+                </tr>
+                <tr>
+                  <th>SemanticMoments DINO</th>
+                  <td>11.4</td>
+                  <td>37.3</td>
+                  <td>9.9</td>
+                  <td>22.0</td>
+                  <td>62.7</td>
+                </tr>
+                <tr>
+                  <th>SemanticMoments V-JEPA2</th>
+                  <td class="best">31.5</td>
+                  <td>52.2</td>
+                  <td>12.7</td>
+                  <td>38.3</td>
+                  <td class="second">92.5</td>
+                </tr>
+                <tr>
+                  <th>DisMo</th>
+                  <td>24.6</td>
+                  <td class="second">69.8</td>
+                  <td class="best">20.9</td>
+                  <td class="second">55.3</td>
+                  <td>92.0</td>
+                </tr>
+                <tr class="ours-row">
+                  <th>Ours</th>
+                  <td class="second">26.5</td>
+                  <td class="best">72.8</td>
+                  <td class="second">17.1</td>
+                  <td class="best">55.4</td>
+                  <td class="best">93.0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="qualitative" class="band qualitative-band">
+        <div class="section-heading">
+          <h2>Qualitative Examples</h2>
+        </div>
+
+        <div class="qualitative-carousel" aria-live="polite">
+          <button
+            class="carousel-button qualitative-button prev"
+            type="button"
+            data-qualitative-action="prev"
+            aria-label="Previous qualitative example"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+
+          <div class="qualitative-track">
+            <div class="qualitative-column-labels">
+              <span>Source A</span>
+              <span>Source B</span>
+              <span>Generation</span>
+            </div>
+            <article class="qualitative-card is-active" tabindex="0">
+            <div class="qualitative-media">
+              <video
+                src="assets/qualitative/01-wan-motion-transfer.mp4"
+                loop
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Qualitative motion transfer example one"
+              ></video>
+              <img
+                class="qualitative-poster"
+                src="assets/qualitative/01-masks.png"
+                alt="Three starting scenes with the selected subjects outlined by masks"
+              />
+            </div>
+          </article>
+
+          <article class="qualitative-card" tabindex="0">
+            <div class="qualitative-media">
+              <video
+                src="assets/qualitative/02-wan-motion-transfer.mp4"
+                loop
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Qualitative motion transfer example two"
+              ></video>
+              <img
+                class="qualitative-poster"
+                src="assets/qualitative/02-masks.png"
+                alt="Three starting scenes with the selected subjects outlined by masks"
+              />
+            </div>
+          </article>
+
+          <article class="qualitative-card" tabindex="0">
+            <div class="qualitative-media">
+              <video
+                src="assets/qualitative/03-wan-motion-transfer.mp4"
+                loop
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Qualitative motion transfer example three"
+              ></video>
+              <img
+                class="qualitative-poster"
+                src="assets/qualitative/03-masks.png"
+                alt="Three starting scenes with the selected subjects outlined by masks"
+              />
+            </div>
+          </article>
+
+          <article class="qualitative-card" tabindex="0">
+            <div class="qualitative-media">
+              <video
+                src="assets/qualitative/04-wan-motion-transfer.mp4"
+                loop
+                muted
+                playsinline
+                preload="auto"
+                aria-label="Qualitative motion transfer example four"
+              ></video>
+              <img
+                class="qualitative-poster"
+                src="assets/qualitative/04-masks.png"
+                alt="Three starting scenes with the selected subjects outlined by masks"
+              />
+            </div>
+          </article>
+          </div>
+
+          <button
+            class="carousel-button qualitative-button next"
+            type="button"
+            data-qualitative-action="next"
+            aria-label="Next qualitative example"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="carousel-dots qualitative-dots"
+          aria-label="Qualitative example selector"
+        ></div>
+      </section>
+
+      <details id="comparisons" class="band videos-band comparisons-band">
+        <summary class="comparisons-summary">
+          <span class="summary-title">Comparisons</span>
+          <span class="summary-hint">Open the gallery</span>
+        </summary>
+
+        <div class="comparisons-content">
+          <div class="video-controls" aria-label="Video gallery controls">
+            <button
+              class="gallery-tab is-active"
+              type="button"
+              data-gallery="transfer"
+            >
+              Transfer
+            </button>
+            <button class="gallery-tab" type="button" data-gallery="composite">
+              Composite
+            </button>
+          </div>
+
+          <div class="carousel" aria-live="polite">
+            <button
+              class="carousel-button prev"
+              type="button"
+              data-action="prev"
+              aria-label="Previous example"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <div class="carousel-display">
+              <aside
+                class="model-labels"
+                id="model-labels"
+                aria-label="Compared models"
+              ></aside>
+              <article
+                class="video-card carousel-card"
+                id="carousel-card"
+              ></article>
+            </div>
+            <button
+              class="carousel-button next"
+              type="button"
+              data-action="next"
+              aria-label="Next example"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="carousel-dots"
+            id="carousel-dots"
+            aria-label="Example selector"
+          ></div>
+        </div>
+      </details>
+
+      <section id="cite" class="band cite-band">
+        <div class="citation-heading">
+          <div class="section-heading">
+            <p class="eyebrow">Citation</p>
+            <h2>BibTeX</h2>
+          </div>
+          <button class="copy-bibtex" type="button" aria-label="Copy BibTeX">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="8" width="11" height="12" rx="2" />
+              <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2" />
+            </svg>
+            <span>Copy</span>
+          </button>
+        </div>
+        <div class="citation-block">
+          <pre><code>@inproceedings{fundel2026whatmoves,
+  title     = {What Moves? Localized Motion Representations for Compositional Scene Control},
+  author    = {Fundel, Frank and Ben Alaya, Malek and Ressler-Antal, Thomas and Baumann, Stefan Andreas and Ommer, Bjorn},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

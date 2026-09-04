@@ -40,7 +40,7 @@ Existing motion representations often entangle the dynamics of multiple entities
 
 ## 🛠️ Installation
 
-The tested configuration is Python 3.11, PyTorch 2.8, and CUDA 12.8. Create an
+The tested configuration is Python 3.11/3.12, PyTorch 2.8, and CUDA 12.8. Create an
 environment, install the PyTorch build appropriate for your CUDA installation,
 and then choose the smallest dependency set you need.
 
@@ -48,7 +48,7 @@ and then choose the smallest dependency set you need.
 git clone https://github.com/CompVis/WhatMoves.git
 cd WhatMoves
 
-python3.11 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip setuptools wheel packaging ninja
 
@@ -65,7 +65,7 @@ pip install -r requirements.txt
 # Encoder + Wan motion transfer
 pip install -r requirements-wan.txt --no-build-isolation
 
-# Encoder + Wan + interactive app
+# Complete app
 SAM2_BUILD_CUDA=0 pip install -r app/requirements.txt --no-build-isolation
 
 # Optional Wan acceleration (requires a compatible wheel or a CUDA toolkit)
@@ -260,4 +260,3 @@ If you find **WhatMoves** useful in your research, please consider citing our wo
 ```
 
 We would also love to hear about projects that build on WhatMoves or use the learned representations in new settings.
-
