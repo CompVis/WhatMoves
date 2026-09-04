@@ -501,9 +501,27 @@ body {
   cursor: pointer;
   transition: border-color 120ms, background 120ms, transform 120ms;
 }
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  font-weight: 680;
+  text-decoration: none;
+  transition: border-color 120ms, background 120ms, transform 120ms;
+}
+.project-link:hover { border-color: var(--line-strong); background: white; }
+.project-link:active { transform: translateY(1px); }
+.external-link-icon { font-size: 15px; line-height: 0.8; }
 .start-over-button:hover { border-color: var(--line-strong); background: white; }
 .start-over-button:active { transform: translateY(1px); }
-.header-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
 .broom-icon {
   width: 19px;
   height: 19px;
