@@ -35,7 +35,7 @@
 
 ## 💡 TL;DR
 
-Existing motion representations often entangle the dynamics of multiple entities, while isolating objects through cropping removes important scene context. **WhatMoves learns promptable, localized motion representations directly from full videos**, capturing the motion of user-selected regions while preserving their surrounding context. These representations enable object-level motion transfer, compositional scene control, and localized action recognition.
+Current motion representation models entangle the dynamics of different entities, while isolating objects through cropping removes important scene context. WhatMoves learns promptable, localized motion representations directly from full videos, capturing the motion of user-selected regions while preserving their surrounding context. These representations enable object-level motion transfer, compositional scene control, and localized action recognition.
 
 
 ## 🛠️ Installation
