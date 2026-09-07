@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://compvis.github.io/WhatMoves/"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
-  <a href="https://arxiv.org/"><img src="https://img.shields.io/badge/arXiv-paper-b31b1b" alt="Paper"></a>
+  <a href="https://arxiv.org/abs/2609.04383"><img src="https://img.shields.io/badge/arXiv-paper-b31b1b" alt="Paper"></a>
   <a href="https://huggingface.co/CompVis/WhatMoves"><img src="https://img.shields.io/badge/%F0%9F%A4%97-weights-yellow" alt="Weights"></a>
 </p>
 
